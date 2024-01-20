@@ -1,6 +1,7 @@
 package com.ayi.EjercicioEvaluativo1.service.implementations;
 import java.util.List;
 
+import com.ayi.EjercicioEvaluativo1.entity.Producto;
 import com.ayi.EjercicioEvaluativo1.entity.Servicio;
 import com.ayi.EjercicioEvaluativo1.repository.IServicioRepository;
 import com.ayi.EjercicioEvaluativo1.service.contracts.IServicioService;
@@ -27,6 +28,16 @@ public class ServicioServiceImpl implements IServicioService {
         Servicio servicio = servicioRepository.getReferenceById(id);
 
         servicioRepository.delete(servicio);
+
+    }
+
+    @Override
+    @Transactional
+    public Servicio crearServicio(Servicio servicio) {
+
+        servicioRepository.save(servicio);
+
+        return servicio;
 
     }
 

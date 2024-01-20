@@ -7,5 +7,6 @@ public interface IServicioService {
 
     public List<Servicio> listarServicios();
 
+    public Servicio crearServicio(Servicio servicio);
     public void eliminar(Integer id);
 }

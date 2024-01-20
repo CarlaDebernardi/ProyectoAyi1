@@ -32,4 +32,14 @@ public class ProductoServiceImpl implements IProductoService {
         productoRepository.delete(producto);
 
     }
+
+    @Override
+    @Transactional
+    public Producto crearProducto(Producto producto) {
+
+        productoRepository.save(producto);
+
+        return producto;
+
+    }
 }

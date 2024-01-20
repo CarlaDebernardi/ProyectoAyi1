@@ -1,5 +1,7 @@
 package com.ayi.EjercicioEvaluativo1.controller;
 
+import com.ayi.EjercicioEvaluativo1.entity.Producto;
+import com.ayi.EjercicioEvaluativo1.entity.Servicio;
 import com.ayi.EjercicioEvaluativo1.service.contracts.IProductoService;
 import com.ayi.EjercicioEvaluativo1.service.contracts.IServicioService;
 import com.ayi.EjercicioEvaluativo1.service.contracts.IUsuarioService;
@@ -8,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ServicioController {
@@ -47,6 +51,28 @@ public class ServicioController {
 //            return "redirect:../listadopys";
 //        }
 
+    }
+
+    @GetMapping("/nuevoServicio")
+    public String nuevoServicio(Model model){
+        model.addAttribute("servicio", new Servicio());
+        return "servicio_form.html";
+    }
+
+    @PostMapping("/guardarServicio")
+    public String guardarServicio(@ModelAttribute("servicio") Servicio servicio){
+//        try {
+        servicioService.crearServicio(servicio);
+
+//            modelo.put("exito", "La noticia fue creada correctamente!");
+//        } catch (MiException | IOException | IllegalStateException ex) {
+
+//            modelo.put("error", ex.getMessage());
+//            return "noticia_form.html";
+//        }
+        return "redirect:/listadopys";
+//        return "producto_form.html";
+//        return "index.html";
     }
 
 
