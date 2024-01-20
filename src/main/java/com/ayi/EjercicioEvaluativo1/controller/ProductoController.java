@@ -16,15 +16,8 @@ public class ProductoController {
 
     @GetMapping("/eliminarProducto/{id}")
     public String eliminar(@PathVariable Integer id, Model model) {
-
-//        try {
         productoService.eliminar(id);
         return "redirect:../listadopys";
-//        } catch (MiException ex) {
-//            modelo.put("error", ex.getMessage());
-//            return "redirect:../listadopys";
-//        }
-
     }
 
     @GetMapping("/nuevoProducto")
@@ -34,19 +27,9 @@ public class ProductoController {
     }
 
     @PostMapping("/guardarProducto")
-    public String nuevoProducto(@ModelAttribute("producto") Producto producto){
-//        try {
+    public String nuevoProducto(@ModelAttribute("producto") Producto producto) {
             productoService.crearProducto(producto);
-
-//            modelo.put("exito", "La noticia fue creada correctamente!");
-//        } catch (MiException | IOException | IllegalStateException ex) {
-
-//            modelo.put("error", ex.getMessage());
-//            return "noticia_form.html";
-//        }
         return "redirect:/listadopys";
-//        return "producto_form.html";
-//        return "index.html";
     }
 
 }

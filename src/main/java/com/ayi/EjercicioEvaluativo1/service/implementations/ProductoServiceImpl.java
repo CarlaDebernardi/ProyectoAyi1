@@ -1,10 +1,8 @@
 package com.ayi.EjercicioEvaluativo1.service.implementations;
 
 import com.ayi.EjercicioEvaluativo1.entity.Producto;
-import com.ayi.EjercicioEvaluativo1.entity.Servicio;
 import com.ayi.EjercicioEvaluativo1.repository.IProductoRepository;
 import com.ayi.EjercicioEvaluativo1.service.contracts.IProductoService;
-import com.ayi.EjercicioEvaluativo1.service.contracts.IServicioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,10 +34,8 @@ public class ProductoServiceImpl implements IProductoService {
     @Override
     @Transactional
     public Producto crearProducto(Producto producto) {
-
         productoRepository.save(producto);
 
         return producto;
-
     }
 }
