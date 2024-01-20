@@ -1,0 +1,9 @@
+.div {
+
+display: flex;
+
+flex-dirección: columna;
+
+justify-content: center;
+
+}

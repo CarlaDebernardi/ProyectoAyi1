@@ -50,12 +50,5 @@ public class UsuarioServiceImpl implements IUsuarioService {
         usuarioRepository.delete(usuario);
     }
 
-   public Usuario verificarUsuario (String nombre,String password){
-    Usuario user = usuarioRepository.findByNombreAndPasswordUsuario(nombre, password);
-    if (user == null){
-//    if (!user.getNombre().equals(nombre)||!user.getPasswordUsuario().equals(password)){
-      throw new UsuarioNoEncontradoException();
-    } else
-        return user;
-    }
+
 }

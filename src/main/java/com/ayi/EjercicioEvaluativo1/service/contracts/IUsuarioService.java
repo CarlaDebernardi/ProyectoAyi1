@@ -20,5 +20,5 @@ public interface IUsuarioService {
     @Transactional
     void delete(Usuario usuario);
 
-    public Usuario verificarUsuario (String nombre, String password);
+
 }

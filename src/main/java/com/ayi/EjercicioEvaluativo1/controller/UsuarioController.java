@@ -1,6 +1,7 @@
 package com.ayi.EjercicioEvaluativo1.controller;
 
 import com.ayi.EjercicioEvaluativo1.entity.Usuario;
+import com.ayi.EjercicioEvaluativo1.repository.IUsuarioRepository;
 import com.ayi.EjercicioEvaluativo1.service.contracts.IUsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,20 +12,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/")
 public class UsuarioController {
- @Autowired
- private IUsuarioService usuarioService;
+    @Autowired
+    private IUsuarioService usuarioService;
 
-    /*    private IUsuarioService usuarioService;
-
-    public UsuarioController(IUsuarioService usuarioService) {
-        this.usuarioService = usuarioService;
-    }
-*/
+    @Autowired
+    private IUsuarioRepository usuarioRepository;
 
     @GetMapping("/login")
     public String mostrarFormularioLogin(@RequestParam(required = false) String error, ModelMap modelo) {
@@ -35,16 +33,17 @@ public class UsuarioController {
         return "login.html";
     }
 
+
     @PostMapping("/login")
-    public String procesarFormularioLogin(@RequestParam String nombre, @RequestParam String password, Model model) {
-        Usuario usuario = usuarioService.verificarUsuario(nombre, password);
-        if (usuario != null) {
+    public String loguearUsuario(@RequestParam String nombre, @RequestParam String password, Model modelo) {
+        Usuario user = usuarioRepository.findByNombre(nombre);
+        if (user != null && user.getPasswordUsuario().equals(password)) {
             return "redirect:/listadopys";
         } else {
-            System.out.println("NO ESTÁ EL USUARIO");
-            model.addAttribute("error", "El nombre o contraseña no corresponden con un usuario registrado");
-            return "redirect:/login";
+            modelo.addAttribute("error", "El nombre o la contraseña ingresadas no corresponden a un usuario registrado.");
+            return "login";
         }
     }
 }
+
 
