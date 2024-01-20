@@ -6,19 +6,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import java.io.Serializable;
+
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="producto")
-public class Producto {
+public class Producto implements Serializable {
+
     private static final Long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigoInternoProducto;
     private Integer codigoEanProducto;
     private String nombre;
-    private String descripción;
+    private String descripcion;
     private Double precio;
     private Integer stock;
 }

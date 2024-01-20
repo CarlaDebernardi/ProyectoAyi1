@@ -15,14 +15,16 @@ import java.io.Serializable;
 
 @Table (name="servicio")
 public class Servicio implements Serializable {
+
     private static final Long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue (strategy = GenerationType.SEQUENCE)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer codigoInternoServicio;
     private Integer codigoEanServicio;
     private String nombre;
-    private String descripción;
+    private String descripcion;
     private Double precio;
-    private Integer duración;
+    private Integer duracion;
 
 }
