@@ -24,6 +24,10 @@ public class UsuarioController {
     @Autowired
     private IUsuarioRepository usuarioRepository;
 
+    @GetMapping("/")
+    public String inicio() {
+        return "redirect:/login";
+    }
     @GetMapping("/login")
     public String mostrarFormularioLogin(@RequestParam(required = false) String error, ModelMap modelo) {
         if (error != null) {
