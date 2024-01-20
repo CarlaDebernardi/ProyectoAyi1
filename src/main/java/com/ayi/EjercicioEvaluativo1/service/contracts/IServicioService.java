@@ -6,4 +6,6 @@ import java.util.List;
 public interface IServicioService {
 
     public List<Servicio> listarServicios();
+
+    public void eliminar(Integer id);
 }

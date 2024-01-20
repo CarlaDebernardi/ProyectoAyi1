@@ -6,4 +6,6 @@ import java.util.List;
 public interface IProductoService {
 
     public List<Producto> listarProductos();
+
+    public void eliminar(Integer id);
 }

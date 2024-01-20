@@ -20,4 +20,14 @@ public class ServicioServiceImpl implements IServicioService {
         return servicioRepository.findAll();
     }
 
+    @Override
+    @Transactional
+    public void eliminar(Integer id) {
+
+        Servicio servicio = servicioRepository.getReferenceById(id);
+
+        servicioRepository.delete(servicio);
+
+    }
+
 }

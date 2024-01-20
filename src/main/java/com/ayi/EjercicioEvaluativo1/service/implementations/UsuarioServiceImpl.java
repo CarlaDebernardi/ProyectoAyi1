@@ -4,10 +4,10 @@ import com.ayi.EjercicioEvaluativo1.entity.Usuario;
 import com.ayi.EjercicioEvaluativo1.exception.UsuarioNoEncontradoException;
 import com.ayi.EjercicioEvaluativo1.repository.IUsuarioRepository;
 import com.ayi.EjercicioEvaluativo1.service.contracts.IUsuarioService;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,7 +31,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
                 .orElseThrow(() -> new IllegalArgumentException("No se encuentra el usuario con el id" + id)));
         Usuario user = usuarioOptional.get();
         user.setNombre(usuario.getNombre());
-        user.setPassword(usuario.getPassword());
+        user.setPasswordUsuario(usuario.getPasswordUsuario());
         return usuarioRepository.save(user);
 
     }
@@ -39,7 +39,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Override
     @Transactional
     public Usuario findById(Usuario usuario) {
-        return usuarioRepository.findById(usuario.getId()).orElse(null);
+        return usuarioRepository.findById(usuario.getIdUsuario()).orElse(null);
     }
 
     //public List<Usuario> findAll= usuarioRepository.findAll();
@@ -50,10 +50,12 @@ public class UsuarioServiceImpl implements IUsuarioService {
         usuarioRepository.delete(usuario);
     }
 
-   public boolean verificarUsuario (Usuario usuario, String nombre,String password){
-    Usuario user = usuarioRepository.findByNombreAndPassword(nombre, password);
-    if (!usuario.getNombre().equals(user)&&!usuario.getPassword().equals(user)){
+   public Usuario verificarUsuario (String nombre,String password){
+    Usuario user = usuarioRepository.findByNombreAndPasswordUsuario(nombre, password);
+    if (user == null){
+//    if (!user.getNombre().equals(nombre)||!user.getPasswordUsuario().equals(password)){
       throw new UsuarioNoEncontradoException();
-    } else return true;
+    } else
+        return user;
     }
 }

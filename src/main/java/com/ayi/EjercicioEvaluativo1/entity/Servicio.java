@@ -19,9 +19,8 @@ public class Servicio implements Serializable {
     private static final Long serialVersionUID = 1L;
 
     @Id
-//    @GeneratedValue (strategy = GenerationType.SEQUENCE)
-    private Integer codigoInternoServicio;
-    private Integer codigoEanServicio;
+    private Integer idServicio;
+    private Integer codigoEan;
     private String nombre;
     private String descripcion;
     private Double precio;

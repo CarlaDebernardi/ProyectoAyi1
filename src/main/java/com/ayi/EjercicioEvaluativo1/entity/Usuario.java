@@ -15,8 +15,8 @@ import lombok.RequiredArgsConstructor;
 public class Usuario {
     private static final Long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idUsuario;
     private String nombre;
-    private String password;
+    private String passwordUsuario;
 }

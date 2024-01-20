@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class ServicioController {
@@ -33,6 +34,19 @@ public class ServicioController {
         model.addAttribute("productos", productos);
         model.addAttribute("servicios", servicios);
         return "listados.html";
+    }
+
+    @GetMapping("/eliminarServicio/{id}")
+    public String eliminar(@PathVariable Integer id, Model model) {
+
+//        try {
+        servicioService.eliminar(id);
+            return "redirect:../listadopys";
+//        } catch (MiException ex) {
+//            modelo.put("error", ex.getMessage());
+//            return "redirect:../listadopys";
+//        }
+
     }
 
 

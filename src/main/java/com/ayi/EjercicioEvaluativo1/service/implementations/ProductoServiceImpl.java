@@ -1,6 +1,7 @@
 package com.ayi.EjercicioEvaluativo1.service.implementations;
 
 import com.ayi.EjercicioEvaluativo1.entity.Producto;
+import com.ayi.EjercicioEvaluativo1.entity.Servicio;
 import com.ayi.EjercicioEvaluativo1.repository.IProductoRepository;
 import com.ayi.EjercicioEvaluativo1.service.contracts.IProductoService;
 import com.ayi.EjercicioEvaluativo1.service.contracts.IServicioService;
@@ -20,5 +21,15 @@ public class ProductoServiceImpl implements IProductoService {
     @Transactional(readOnly = true)
     public List<Producto> listarProductos() {
         return productoRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public void eliminar(Integer id) {
+
+        Producto producto = productoRepository.getReferenceById(id);
+
+        productoRepository.delete(producto);
+
     }
 }

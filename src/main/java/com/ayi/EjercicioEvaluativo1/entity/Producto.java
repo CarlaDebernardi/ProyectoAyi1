@@ -18,9 +18,8 @@ public class Producto implements Serializable {
     private static final Long serialVersionUID = 1L;
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer codigoInternoProducto;
-    private Integer codigoEanProducto;
+    private Integer idProducto;
+    private Integer codigoEan;
     private String nombre;
     private String descripcion;
     private Double precio;
