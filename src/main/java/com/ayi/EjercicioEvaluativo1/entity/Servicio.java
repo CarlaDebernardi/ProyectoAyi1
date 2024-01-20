@@ -17,12 +17,18 @@ import java.io.Serializable;
 public class Servicio implements Serializable {
     private static final Long serialVersionUID = 1L;
     @Id
-    @GeneratedValue (strategy = GenerationType.SEQUENCE)
+//@GeneratedValue (strategy = GenerationType.SEQUENCE)
+    @Column(name = "codigo_interno_servicio")
     private Integer codigoInternoServicio;
+    @Column(name = "codigo_ean_servicio")
     private Integer codigoEanServicio;
+    @Column(name = "nombre")
     private String nombre;
-    private String descripción;
+    @Column(name = "descripcion")
+    private String descripcion;
+    @Column(name = "precio")
     private Double precio;
+    @Column(name = "duracion")
     private Integer duración;
 
 }
