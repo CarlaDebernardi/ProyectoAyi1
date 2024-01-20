@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@RequiredArgsConstructor
+
 @Table(name="usuario")
 public class Usuario {
     private static final Long serialVersionUID = 1L;

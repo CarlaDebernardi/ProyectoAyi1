@@ -1,4 +1,4 @@
-package com.ayi.EjercicioEvaluativo1.service;
+package com.ayi.EjercicioEvaluativo1.service.contracts;
 
 import com.ayi.EjercicioEvaluativo1.entity.Usuario;
 import jakarta.transaction.Transactional;
@@ -20,5 +20,5 @@ public interface IUsuarioService {
     @Transactional
     void delete(Usuario usuario);
 
-    public boolean verificarUsuario (Usuario usuario, String nombre);
+    public boolean verificarUsuario (Usuario usuario, String nombre, String password);
 }

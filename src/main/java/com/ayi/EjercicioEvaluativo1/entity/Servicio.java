@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@RequiredArgsConstructor
+
 @Table (name="servicio")
 public class Servicio implements Serializable {
     private static final Long serialVersionUID = 1L;

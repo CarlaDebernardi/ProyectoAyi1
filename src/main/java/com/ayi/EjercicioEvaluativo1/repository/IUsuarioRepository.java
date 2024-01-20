@@ -12,5 +12,9 @@ import java.util.List;
 @Repository
 public interface IUsuarioRepository extends JpaRepository <Usuario, Integer> {
 
-   Usuario findByName (String nombre);
+   Usuario findByNombreAndPassword (String nombre,String password);
+
+/*@Query("SELECT u FROM Usuario u WHERE u.nombre LIKE :nombre and u.password LIKE :password")
+   Usuario user (@Param("nombre") String nombre, @Param("password") String password);*/
+
 }
