@@ -28,6 +28,7 @@ public class ServicioController {
 
     @Autowired
     private IProductoService productoService;
+
     @GetMapping("/listadopys")
     public String listadopys(Model model) {
         var productos = productoService.listarProductos();
@@ -42,40 +43,21 @@ public class ServicioController {
 
     @GetMapping("/eliminarServicio/{id}")
     public String eliminar(@PathVariable Integer id, Model model) {
-
-//        try {
         servicioService.eliminar(id);
-            return "redirect:../listadopys";
-//        } catch (MiException ex) {
-//            modelo.put("error", ex.getMessage());
-//            return "redirect:../listadopys";
-//        }
-
+        return "redirect:../listadopys";
     }
 
     @GetMapping("/nuevoServicio")
-    public String nuevoServicio(Model model){
+    public String nuevoServicio(Model model) {
         model.addAttribute("servicio", new Servicio());
         return "servicio_form.html";
     }
 
     @PostMapping("/guardarServicio")
-    public String guardarServicio(@ModelAttribute("servicio") Servicio servicio){
-//        try {
+    public String guardarServicio(@ModelAttribute("servicio") Servicio servicio) {
         servicioService.crearServicio(servicio);
-
-//            modelo.put("exito", "La noticia fue creada correctamente!");
-//        } catch (MiException | IOException | IllegalStateException ex) {
-
-//            modelo.put("error", ex.getMessage());
-//            return "noticia_form.html";
-//        }
         return "redirect:/listadopys";
-//        return "producto_form.html";
-//        return "index.html";
     }
-
-
 
 
 }

@@ -28,7 +28,7 @@ public class ProductoController {
 
     @PostMapping("/guardarProducto")
     public String nuevoProducto(@ModelAttribute("producto") Producto producto) {
-            productoService.crearProducto(producto);
+        productoService.crearProducto(producto);
         return "redirect:/listadopys";
     }
 
