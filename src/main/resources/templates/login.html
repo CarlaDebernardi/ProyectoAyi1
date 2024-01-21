@@ -11,25 +11,31 @@
 </head>
 <body>
 <div class="row-justify-content-center">
+    <br>
+    <br>
+    <br>
 <h2 text align="center">Bienvenido</h2>
 <h3 text align="center">Iniciar Sesión</h3>
-
-<form class="row g-3 align-items-center" th:action="${login}" method="post" >
-    <div class="col-auto align-items-center">
+<br>
+<form class="row g-3 justify-content-center align-items-center" th:action="${login}" method="post" >
+    <div class="col-auto">
         <label for="nombre" class="visually-hidden">nombre</label>
         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" required>
     </div>
-    <div class="col-auto align-items-center">
+    <br>
+    <div class="col-auto ">
         <label for="password" class="visually-hidden">password</label>
         <input type="password" class="form-control" id="password" name="password" placeholder="password" required>
     </div>
-    <div class="col-auto align-items-center" >
+    <br>
+    <div class="col-auto" >
         <button type="submit" class="btn btn-primary mb-3">Ingresar</button>
     </div>
 
 </form>
-
-<div th:if="${error != null}"class="card text-bg-danger mb-3" style="max-width: 18rem;">
+<br>
+    <br>
+<div th:if="${error != null}"class="card text-bg-danger mb-3 mx-auto" style="max-width: 18rem;">
     <div class="card-header">ERROR</div>
     <div class="card-body">
         <p class="card-text" th:text="${error}"></p>
